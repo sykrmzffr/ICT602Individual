@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/layout_activity_detail.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/layout/activity_detail.xml"
+    },
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/layout_activity_history.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.syakir.electricitycalculator.app-debug-31:/layout_activity_about.xml.flat",
+        "source": "com.syakir.electricitycalculator.app-main-33:/layout/activity_about.xml"
+    }
+]
