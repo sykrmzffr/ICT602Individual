@@ -3,7 +3,7 @@
     <string name="app_name">Billicity</string>
 
     <!-- Main Screen -->
-    <string name="title_calculator">Electricity Bill Calculator</string>
+    <string name="title_calculator">BILLICITY: Electricity Bill Calculator</string>
     <string name="label_month">Select Month:</string>
     <string name="label_units">Units Used (kWh):</string>
     <string name="label_rebate">Rebate Percentage:</string>
