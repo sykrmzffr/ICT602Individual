@@ -1,6 +1,8 @@
 package com.syakir.electricitycalculator;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,8 +29,9 @@ public class DetailActivity extends AppCompatActivity {
     private Spinner spinnerEditMonth;
     private EditText etEditUnits;
     private SeekBar seekBarEditRebate;
-    private TextView tvEditRebateValue;
+    private EditText etEditRebateInput;
     private Button btnEdit, btnSave, btnDelete, btnBack;
+    private boolean isUpdatingRebate = false;
 
     private BillDao billDao;
     private BillRecord currentRecord;
@@ -65,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
         spinnerEditMonth = findViewById(R.id.spinnerEditMonth);
         etEditUnits = findViewById(R.id.etEditUnits);
         seekBarEditRebate = findViewById(R.id.seekBarEditRebate);
-        tvEditRebateValue = findViewById(R.id.tvEditRebateValue);
+        etEditRebateInput = findViewById(R.id.etEditRebateInput);
         btnSave = findViewById(R.id.btnSave);
 
         // Find buttons
@@ -79,11 +82,16 @@ public class DetailActivity extends AppCompatActivity {
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerEditMonth.setAdapter(monthAdapter);
 
-        // Setup rebate SeekBar listener for edit mode
+        // Setup rebate SeekBar listener for edit mode — each step = 0.05%
         seekBarEditRebate.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvEditRebateValue.setText(progress + "%");
+                if (fromUser && !isUpdatingRebate) {
+                    isUpdatingRebate = true;
+                    double value = progress * 0.05;
+                    etEditRebateInput.setText(String.format(Locale.getDefault(), "%.2f", value));
+                    isUpdatingRebate = false;
+                }
             }
 
             @Override
@@ -92,6 +100,31 @@ public class DetailActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        // Setup EditText listener to sync back to SeekBar
+        etEditRebateInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!isUpdatingRebate) {
+                    isUpdatingRebate = true;
+                    try {
+                        double value = Double.parseDouble(s.toString());
+                        if (value >= 0 && value <= 5.0) {
+                            int progress = (int) Math.round(value / 0.05);
+                            seekBarEditRebate.setProgress(progress);
+                        }
+                    } catch (NumberFormatException ignored) {
+                    }
+                    isUpdatingRebate = false;
+                }
             }
         });
 
@@ -145,7 +178,7 @@ public class DetailActivity extends AppCompatActivity {
         tvDetailMonth.setText(currentRecord.getMonth());
         tvDetailUnits.setText(String.format(Locale.getDefault(), "%.1f kWh", currentRecord.getUnits()));
         tvDetailTotal.setText(String.format(Locale.getDefault(), "RM %.2f", currentRecord.getTotalCharges()));
-        tvDetailRebate.setText(String.format(Locale.getDefault(), "%.0f%%", currentRecord.getRebatePercent()));
+        tvDetailRebate.setText(String.format(Locale.getDefault(), "%.2f%%", currentRecord.getRebatePercent()));
         tvDetailFinalCost.setText(String.format(Locale.getDefault(), "RM %.2f", currentRecord.getFinalCost()));
     }
 
@@ -170,8 +203,9 @@ public class DetailActivity extends AppCompatActivity {
             }
 
             etEditUnits.setText(String.valueOf((int) currentRecord.getUnits()));
-            seekBarEditRebate.setProgress((int) currentRecord.getRebatePercent());
-            tvEditRebateValue.setText((int) currentRecord.getRebatePercent() + "%");
+            int sliderPos = (int) Math.round(currentRecord.getRebatePercent() / 0.05);
+            seekBarEditRebate.setProgress(sliderPos);
+            etEditRebateInput.setText(String.format(Locale.getDefault(), "%.2f", currentRecord.getRebatePercent()));
         } else {
             layoutEdit.setVisibility(View.GONE);
             btnEdit.setText(R.string.btn_edit);
@@ -213,8 +247,14 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        // Get rebate
-        int rebatePercent = seekBarEditRebate.getProgress();
+        // Get rebate from EditText
+        double rebatePercent = 0;
+        try {
+            rebatePercent = Double.parseDouble(etEditRebateInput.getText().toString().trim());
+            if (rebatePercent < 0) rebatePercent = 0;
+            if (rebatePercent > 5) rebatePercent = 5;
+        } catch (NumberFormatException ignored) {
+        }
 
         // Recalculate
         double totalCharges = MainActivity.calculateTieredCharges(units);

@@ -60,6 +60,7 @@
     <string name="title_calculator">Electricity Bill Calculator</string>
     <string name="title_detail">Bill Details</string>
     <string name="title_history">Bill History</string>
+    <string formatted="false" name="usage_guide">HOW TO USE\n\n1. Select a month and enter your electricity usage (kWh).\n2. Adjust the rebate slider if applicable.\n3. Tap \"Calculate\" to see your estimated bill.\n4. Your result is saved automatically.\n5. Tap \"View History\" to see past calculations.\n6. Tap any record to view, edit, or delete it.</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

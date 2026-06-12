@@ -3154,7 +3154,9 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id etEditRebateInput
 id etEditUnits
+id etRebateInput
 id etUnits
 id exitUntilCollapsed
 id expand_activities_button
@@ -3445,12 +3447,10 @@ id tvDetailMonth
 id tvDetailRebate
 id tvDetailTotal
 id tvDetailUnits
-id tvEditRebateValue
 id tvEmptyHistory
 id tvFinalCost
 id tvGithubLink
 id tvInstructions
-id tvRebateValue
 id tvTotalCharges
 id unchecked
 id uniform
@@ -3864,6 +3864,7 @@ string title_about
 string title_calculator
 string title_detail
 string title_history
+string usage_guide
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

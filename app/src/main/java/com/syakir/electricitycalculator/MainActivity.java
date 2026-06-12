@@ -2,6 +2,8 @@ package com.syakir.electricitycalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerMonth;
     private EditText etUnits;
     private SeekBar seekBarRebate;
-    private TextView tvRebateValue;
+    private EditText etRebateInput;
+    private boolean isUpdatingRebate = false;
     private TextView tvTotalCharges;
     private TextView tvFinalCost;
     private LinearLayout layoutResults;
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerMonth = findViewById(R.id.spinnerMonth);
         etUnits = findViewById(R.id.etUnits);
         seekBarRebate = findViewById(R.id.seekBarRebate);
-        tvRebateValue = findViewById(R.id.tvRebateValue);
+        etRebateInput = findViewById(R.id.etRebateInput);
         tvTotalCharges = findViewById(R.id.tvTotalCharges);
         tvFinalCost = findViewById(R.id.tvFinalCost);
         layoutResults = findViewById(R.id.layoutResults);
@@ -60,11 +63,16 @@ public class MainActivity extends AppCompatActivity {
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMonth.setAdapter(monthAdapter);
 
-        // Setup rebate SeekBar listener
+        // Setup rebate SeekBar listener — each step = 0.05%
         seekBarRebate.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvRebateValue.setText(progress + "%");
+                if (fromUser && !isUpdatingRebate) {
+                    isUpdatingRebate = true;
+                    double value = progress * 0.05;
+                    etRebateInput.setText(String.format(Locale.getDefault(), "%.2f", value));
+                    isUpdatingRebate = false;
+                }
             }
 
             @Override
@@ -73,6 +81,31 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        // Setup EditText listener to sync back to SeekBar
+        etRebateInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!isUpdatingRebate) {
+                    isUpdatingRebate = true;
+                    try {
+                        double value = Double.parseDouble(s.toString());
+                        if (value >= 0 && value <= 5.0) {
+                            int progress = (int) Math.round(value / 0.05);
+                            seekBarRebate.setProgress(progress);
+                        }
+                    } catch (NumberFormatException ignored) {
+                    }
+                    isUpdatingRebate = false;
+                }
             }
         });
 
@@ -136,8 +169,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Get rebate percentage
-        int rebatePercent = seekBarRebate.getProgress();
+        // Get rebate percentage from EditText
+        double rebatePercent = 0;
+        try {
+            rebatePercent = Double.parseDouble(etRebateInput.getText().toString().trim());
+            if (rebatePercent < 0) rebatePercent = 0;
+            if (rebatePercent > 5) rebatePercent = 5;
+        } catch (NumberFormatException ignored) {
+        }
 
         // Calculate total charges using tiered rates
         double totalCharges = calculateTieredCharges(units);

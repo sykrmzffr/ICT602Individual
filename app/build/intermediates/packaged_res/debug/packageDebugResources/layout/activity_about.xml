@@ -67,13 +67,31 @@
             android:background="#CCCCCC"
             android:layout_marginBottom="16dp" />
 
-        <!-- App Instructions -->
+        <!-- App Description -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_instructions"
             android:textSize="14sp"
             android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Detailed Usage Guide -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/usage_guide"
+            android:textSize="13sp"
+            android:lineSpacingExtra="4dp"
+            android:background="#E3F2FD"
+            android:padding="14dp"
             android:layout_marginBottom="16dp" />
 
         <!-- Divider -->

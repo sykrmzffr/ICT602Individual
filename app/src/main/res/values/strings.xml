@@ -59,6 +59,8 @@
     <string name="github_url">https://github.com/sykrmzffr/ICT602Individual</string>
     <string name="about_instructions" formatted="false">Billicity helps you estimate your monthly electricity bill based on Malaysian electricity tariff rates.\n\nFeatures:\n• Calculate bills using tiered rates\n• Apply rebate discounts (0%–5%)\n• Save and view calculation history\n• Edit or delete past records</string>
 
+    <string name="usage_guide" formatted="false">HOW TO USE\n\n1. Select a month and enter your electricity usage (kWh).\n2. Adjust the rebate slider if applicable.\n3. Tap \"Calculate\" to see your estimated bill.\n4. Your result is saved automatically.\n5. Tap \"View History\" to see past calculations.\n6. Tap any record to view, edit, or delete it.</string>
+
     <!-- Errors -->
     <string name="error_empty_units">Please enter the units used.</string>
     <string name="error_invalid_units">Units must be between 1 and 1000.</string>

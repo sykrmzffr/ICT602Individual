@@ -21,7 +21,9 @@ id btnDelete
 id btnEdit
 id btnHistory
 id btnSave
+id etEditRebateInput
 id etEditUnits
+id etRebateInput
 id etUnits
 id ivStudentPhoto
 id layoutDisplay
@@ -37,12 +39,10 @@ id tvDetailMonth
 id tvDetailRebate
 id tvDetailTotal
 id tvDetailUnits
-id tvEditRebateValue
 id tvEmptyHistory
 id tvFinalCost
 id tvGithubLink
 id tvInstructions
-id tvRebateValue
 id tvTotalCharges
 layout activity_about
 layout activity_detail
@@ -88,4 +88,5 @@ string title_about
 string title_calculator
 string title_detail
 string title_history
+string usage_guide
 style AppTheme
