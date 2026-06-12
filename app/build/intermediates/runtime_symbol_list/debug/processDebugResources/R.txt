@@ -2904,6 +2904,7 @@ int drawable ic_arrow_back_black_24 0x7f080086
 int drawable ic_clear_black_24 0x7f080087
 int drawable ic_clock_black_24dp 0x7f080088
 int drawable ic_keyboard_black_24dp 0x7f080089
+int drawable ic_launcher_background 0x7f0800dd
 int drawable ic_launcher_foreground 0x7f08008a
 int drawable ic_m3_chip_check 0x7f08008b
 int drawable ic_m3_chip_checked_circle 0x7f08008c
@@ -2984,6 +2985,7 @@ int drawable notification_template_icon_bg 0x7f0800d6
 int drawable notification_template_icon_low_bg 0x7f0800d7
 int drawable notification_tile_bg 0x7f0800d8
 int drawable notify_panel_notification_icon_bg 0x7f0800d9
+int drawable syakir 0x7f0800de
 int drawable test_level_drawable 0x7f0800da
 int drawable tooltip_frame_dark 0x7f0800db
 int drawable tooltip_frame_light 0x7f0800dc
@@ -3662,6 +3664,7 @@ int layout select_dialog_multichoice_material 0x7f0c006a
 int layout select_dialog_singlechoice_material 0x7f0c006b
 int layout support_simple_spinner_dropdown_item 0x7f0c006c
 int mipmap ic_launcher 0x7f0e0000
+int mipmap ic_launcher_foreground 0x7f0e0002
 int mipmap ic_launcher_round 0x7f0e0001
 int plurals mtrl_badge_content_description 0x7f0f0000
 int string abc_action_bar_home_description 0x7f100000

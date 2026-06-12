@@ -23,8 +23,8 @@
     <color name="lightGray">#FAFAFA</color>
     <color name="resultGreen">#2E7D32</color>
     <color name="white">#FFFFFF</color>
-    <string formatted="false" name="about_instructions">ElectriBill helps you estimate your monthly electricity bill based on Malaysian electricity tariff rates.\n\nFeatures:\n• Calculate bills using tiered rates\n• Apply rebate discounts (0%–5%)\n• Save and view calculation history\n• Edit or delete past records</string>
-    <string name="app_name">ElectriBill</string>
+    <string formatted="false" name="about_instructions">Billicity helps you estimate your monthly electricity bill based on Malaysian electricity tariff rates.\n\nFeatures:\n• Calculate bills using tiered rates\n• Apply rebate discounts (0%–5%)\n• Save and view calculation history\n• Edit or delete past records</string>
+    <string name="app_name">Billicity</string>
     <string name="btn_about">About</string>
     <string name="btn_back">Back</string>
     <string name="btn_calculate">Calculate</string>
@@ -35,8 +35,8 @@
     <string name="btn_view_history">View History</string>
     <string name="btn_yes">Yes</string>
     <string name="calculation_saved">Calculation saved!</string>
-    <string name="copyright">© 2025 Muhammad Syakir Muzaffar. All rights reserved.</string>
-    <string name="course_info">ICT602 – Mobile Technology</string>
+    <string name="copyright">© 2025 Syakir Muzaffar bin Saiful Bahari. All rights reserved.</string>
+    <string name="course_info">ICT602 – MOBILE TECHNOLOGY AND DEVELOPMENT </string>
     <string name="delete_confirm_message">Are you sure you want to delete this record?</string>
     <string name="delete_confirm_title">Delete Record</string>
     <string name="empty_history">No records found. Calculate a bill to see it here.</string>
@@ -54,8 +54,8 @@
     <string name="record_deleted">Record deleted.</string>
     <string name="record_updated">Record updated successfully.</string>
     <string name="result_placeholder">RM 0.00</string>
-    <string name="student_id">Student ID: 2023406876</string>
-    <string name="student_name">Muhammad Syakir Muzaffar</string>
+    <string name="student_id">Student ID: 2025178227</string>
+    <string name="student_name">Syakir Muzaffar bin Saiful Bahari</string>
     <string name="title_about">About</string>
     <string name="title_calculator">Electricity Bill Calculator</string>
     <string name="title_detail">Bill Details</string>

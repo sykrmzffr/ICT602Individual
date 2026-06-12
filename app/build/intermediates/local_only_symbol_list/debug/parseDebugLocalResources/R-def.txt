@@ -9,7 +9,9 @@ color deleteRed
 color lightGray
 color resultGreen
 color white
+drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable syakir
 id btnAbout
 id btnBackAbout
 id btnBackDetail
@@ -47,6 +49,7 @@ layout activity_detail
 layout activity_history
 layout activity_main
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string about_instructions
 string app_name
